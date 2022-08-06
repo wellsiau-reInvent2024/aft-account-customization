@@ -5,3 +5,12 @@ resource "aws_config_config_rule" "r" {
     source_identifier = "VPC_FLOW_LOGS_ENABLED"
   }
 }
+
+resource "aws_config_config_rule" "r-us-west-2" {
+  name = "vpc_flow_log_guardrail"
+  source {
+    owner             = "AWS"
+    source_identifier = "VPC_FLOW_LOGS_ENABLED"
+  }
+  provider = aws.us-west-2
+}
