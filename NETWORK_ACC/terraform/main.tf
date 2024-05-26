@@ -34,7 +34,7 @@ module "ipam" {
 # ---------- SSN PARAMETER ------------
 resource "aws_ssm_parameter" "ipam_pool" {
   provider = aws.aft_management
-  name  = "aft/network/ipam/pool/spokes/id"
+  name  = "/aft/network/ipam/pool/spokes/id"
   type  = "String"
   value = module.ipam.pools_level_2["usa/spoke"].id
 }
