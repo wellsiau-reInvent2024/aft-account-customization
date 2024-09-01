@@ -14,7 +14,7 @@ module "aws-iam-identity-center" {
 
   sso_users = {
     "${local.sso.user.user_name}" : {
-      group_membership = [local.sso_group.name]
+      group_membership = [local.sso.group.name]
       user_name        = local.sso.user.user_name
       given_name       = local.sso.user.given_name
       family_name      = local.sso.user.family_name
