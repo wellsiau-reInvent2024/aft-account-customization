@@ -1,7 +1,7 @@
 data "aws_ssoadmin_permission_set" "new_permission_sets" {
   depends_on   = [module.aws-iam-identity-center]
   for_each     = local.new_permission_sets
-  instance_arn = tolist(data.aws_ssoadmin_instances.example.arns)[0]
+  instance_arn = tolist(data.aws_ssoadmin_instances.current.arns)[0]
   name         = each.key
 }
 
