@@ -33,7 +33,7 @@ module "aws-iam-identity-center" {
   version  = "1.0.0"
 
   permission_sets = {
-    each.key = {
+    "${each.key}" = {
       description          = each.value.description
       session_duration     = "PT4H",
       aws_managed_policies = each.value.aws_managed_policies,
