@@ -7,7 +7,7 @@ locals {
       email      = unsensitive(data.aws_ssm_parameter.sso_email.value)
     }
     group = {
-      name = unsensitive(data.aws_ssm_parameter.sso_group_name.value)
+      name = unsensitive(data.aws_ssm_parameter.sso_group.value)
     }
   }
 }
