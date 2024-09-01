@@ -1,3 +1,5 @@
+data "aws_ssoadmin_instances" "current" {}
+
 data "aws_ssoadmin_permission_set" "new_permission_sets" {
   depends_on   = [module.aws-iam-identity-center]
   for_each     = local.new_permission_sets

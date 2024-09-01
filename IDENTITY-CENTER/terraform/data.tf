@@ -9,5 +9,3 @@ data "aws_iam_policy" "ec2_readonly_managed_policy" {
 data "aws_iam_policy" "poweruser_managed_policy" {
   name = "PowerUserAccess"
 }
-
-data "aws_ssoadmin_instances" "current" {}

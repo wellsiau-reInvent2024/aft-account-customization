@@ -1,6 +1,3 @@
-// This is a template file for a basic deployment.
-// Modify the parameters below with actual values
-
 module "aws-iam-identity-center" {
   for_each = local.new_permission_sets
   source   = "aws-ia/iam-identity-center/aws"
