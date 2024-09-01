@@ -25,3 +25,16 @@ provider "aws" {
   }
   alias = "aft_management"
 }
+
+provider "aws" {
+  region = "{{ provider_region }}"
+  assume_role {
+    role_arn    = "arn:aws:iam::397352175627:role/AWSAFTExecution"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "aft_sso"
+}
