@@ -1,0 +1,16 @@
+summary-position: bottom
+compact: True
+quiet: True
+directory:
+- IDENTITY-CENTER/terraform
+- GENAI-WORKLOAD/terraform
+skip-check:
+- CKV_TF_1 # allow use version to refer aws-ia repo
+- CKV_TF_2 # allow use version to refer aws-ia repo
+# - CKV2_AWS_62
+# - CKV2_AWS_6
+# - CKV2_AWS_61
+# - CKV_AWS_18
+# - CKV_AWS_145
+# - CKV_AWS_144
+# - CKV_AWS_21

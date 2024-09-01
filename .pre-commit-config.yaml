@@ -1,0 +1,27 @@
+---
+fail_fast: false
+minimum_pre_commit_version: "2.6.0"
+repos:
+  - repo: https://github.com/antonbabenko/pre-commit-terraform
+    rev: v1.81.0
+    hooks:
+      - id: terraform_fmt
+        args:
+          - --args=-recursive
+  - repo: meta
+    hooks:
+      - id: check-useless-excludes
+  - repo: https://github.com/bridgecrewio/checkov.git
+    rev: ee7b487f2ffb259b725cc94b6f2ade01d7700624
+    hooks:
+      - id: checkov
+        entry: checkov --config-file .checkov.yaml
+      - id: checkov_secrets
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.4.0
+    hooks:
+      - id: trailing-whitespace
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-yaml
+      - id: detect-private-key
