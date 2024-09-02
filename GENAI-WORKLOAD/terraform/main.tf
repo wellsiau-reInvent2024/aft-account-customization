@@ -5,7 +5,14 @@ module "aws-iam-identity-center" {
     aws = aws.aft_sso
   }
 
-  existing_permission_sets = ["SandboxAccess", "CustomPermissionAccess"]
+  existing_permission_sets = {
+    SandboxAccess = {
+      permission_set_name = "SandboxAccess"
+    },
+    CustomPermissionAccess = {
+      permission_set_name = "CustomPermissionAccess"
+    }
+  }
 
   sso_groups = {
     "${local.sso.group.name}" : {
