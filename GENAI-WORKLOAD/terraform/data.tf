@@ -1,3 +1,5 @@
+data "aws_caller_identity" "current" {}
+
 data "aws_ssm_parameter" "sso_user" {
   name = "/aft/account-request/custom-fields/sso_user"
 }
@@ -16,4 +18,9 @@ data "aws_ssm_parameter" "sso_email" {
 
 data "aws_ssm_parameter" "sso_group" {
   name = "/aft/account-request/custom-fields/sso_group"
+}
+
+data "aws_ssm_parameter" "SandboxAccess" {
+  provider = aws.aft_sso
+  name     = "/aft/sso/permission_set/SandboxAccess"
 }

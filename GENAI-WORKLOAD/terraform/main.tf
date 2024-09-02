@@ -21,4 +21,16 @@ module "aws-iam-identity-center" {
       email            = local.sso.user.email
     },
   }
+
+  account_assignments = {
+    "${local.sso.group.name}" : {
+      principal_name  = "${local.sso.group.name}"
+      principal_type  = "GROUP"
+      principal_idp   = "INTERNAL"
+      permission_sets = ["SandboxAccess", "CustomPermissionAccess"]
+      account_ids = [
+        data.aws_caller_identity.current.account_id
+      ]
+    },
+  }
 }
