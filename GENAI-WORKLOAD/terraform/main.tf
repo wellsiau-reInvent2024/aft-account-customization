@@ -36,7 +36,7 @@ module "aws-iam-identity-center" {
       principal_name  = "${local.sso.group.name}"
       principal_type  = "GROUP"
       principal_idp   = "INTERNAL"
-      permission_sets = ["SandboxAccess", "CustomPermissionAccess"]
+      permission_sets = split(",", data.aws_ssm_parameter.ou_permission_sets.value)
       account_ids = [
         data.aws_caller_identity.current.account_id
       ]
