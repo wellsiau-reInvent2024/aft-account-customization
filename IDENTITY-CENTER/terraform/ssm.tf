@@ -14,3 +14,9 @@ resource "aws_ssm_parameter" "new_permission_sets" {
   type  = "String"
   value = each.value.arn
 }
+
+resource "aws_ssm_parameter" "custom_ou_permission_sets" {
+  name  = "/aft/sso/permission_set/ou/custom"
+  type  = "String"
+  value = "SandboxAccess,CustomPermissionAccess"
+}
