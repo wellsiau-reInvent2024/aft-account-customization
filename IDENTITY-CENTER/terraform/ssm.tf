@@ -16,7 +16,7 @@ resource "aws_ssm_parameter" "new_permission_sets" {
 }
 
 resource "aws_ssm_parameter" "custom_ou_permission_sets" {
-  name  = "/aft/sso/permission_set/ou/custom"
+  name  = "/aft/sso/permission_set/ou/Custom"
   type  = "String"
   value = "SandboxAccess,CustomPermissionAccess"
 }
