@@ -14,7 +14,7 @@ module "aws-iam-identity-center" {
   #   }
   # }
   existing_permission_sets = {
-    for permission_set in split(",", data.aws_ssm_parameter.ou_permission_sets.value) :
+    for permission_set in split(",",nonsensitive(data.aws_ssm_parameter.ou_permission_sets.value)) :
     permission_set => {
       permission_set_name = permission_set
     }
