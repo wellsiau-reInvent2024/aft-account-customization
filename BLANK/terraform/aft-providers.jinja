@@ -25,3 +25,84 @@ provider "aws" {
   }
   alias = "aft_management"
 }
+
+provider "aws" {
+  region = "{{ provider_region }}"
+  assume_role {
+    role_arn    = "arn:aws:iam::397352175627:role/AWSAFTExecution"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "aft_sso"
+}
+
+##### Alias Us-East-1 #####
+
+provider "aws" {
+  region = "us-east-1"
+  assume_role {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "us_east_1"
+}
+
+provider "awscc" {
+  region = "us-east-1"
+  assume_role = {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  alias = "us_east_1"
+}
+
+##### Alias Us-West-2 #####
+
+provider "aws" {
+  region = "us-west-2"
+  assume_role {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "us_west_2"
+}
+
+provider "awscc" {
+  region = "us-west-2"
+  assume_role = {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  alias = "us_west_2"
+}
+
+##### Alias Us-East-2 #####
+provider "aws" {
+  region = "us-east-2"
+  assume_role {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  default_tags {
+    tags = {
+      managed_by                  = "AFT"
+    }
+  }
+  alias = "us_east_2"
+}
+
+provider "awscc" {
+  region = "us-east-2"
+  assume_role = {
+    role_arn    = "{{ target_admin_role_arn }}"
+  }
+  alias = "us_east_2"
+}

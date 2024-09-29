@@ -7,6 +7,7 @@ data "aws_ssoadmin_permission_set" "new_permission_sets" {
   name         = each.key
 }
 
+### All permission sets 
 resource "aws_ssm_parameter" "new_permission_sets" {
   for_each = data.aws_ssoadmin_permission_set.new_permission_sets
 
@@ -15,6 +16,7 @@ resource "aws_ssm_parameter" "new_permission_sets" {
   value = each.value.arn
 }
 
+### Set permission sets per OU
 resource "aws_ssm_parameter" "custom_ou_permission_sets" {
   name  = "/aft/sso/permission_set/ou/Custom"
   type  = "String"
