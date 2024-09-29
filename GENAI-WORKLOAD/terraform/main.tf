@@ -5,12 +5,18 @@ module "aws-iam-identity-center" {
     aws = aws.aft_sso
   }
 
+  # existing_permission_sets = {
+  #   SandboxAccess = {
+  #     permission_set_name = "SandboxAccess"
+  #   },
+  #   CustomPermissionAccess = {
+  #     permission_set_name = "CustomPermissionAccess"
+  #   }
+  # }
   existing_permission_sets = {
-    SandboxAccess = {
-      permission_set_name = "SandboxAccess"
-    },
-    CustomPermissionAccess = {
-      permission_set_name = "CustomPermissionAccess"
+    for permission_set in split(",", data.aws_ssm_parameter.ou_permission_sets.value) :
+    permission_set => {
+      permission_set_name = permission_set
     }
   }
 
