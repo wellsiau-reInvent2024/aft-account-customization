@@ -6,7 +6,7 @@ module "aws-iam-identity-center" {
   permission_sets = {
     "${each.key}" = {
       description          = each.value.description
-      session_duration     = "PT4H",
+      session_duration     = "PT8H",
       aws_managed_policies = each.value.aws_managed_policies,
       tags                 = { ManagedBy = "AFT" }
     }
