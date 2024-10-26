@@ -15,7 +15,7 @@ data "aws_ssm_parameter" "ipam_oregon" {
 data "aws_vpc_ipam_pool" "ipam_nvirginia" {
   filter {
     name   = "description"
-    values = ["nvirginia/${data.aws_ssm_parameter.environment.value}"]
+    values = ["nvirginia-${data.aws_ssm_parameter.environment.value}"]
   }
 
   filter {
@@ -27,7 +27,7 @@ data "aws_vpc_ipam_pool" "ipam_nvirginia" {
 data "aws_vpc_ipam_pool" "ipam_oregon" {
   filter {
     name   = "description"
-    values = ["oregon/${data.aws_ssm_parameter.environment.value}"]
+    values = ["oregon-${data.aws_ssm_parameter.environment.value}"]
   }
 
   filter {
