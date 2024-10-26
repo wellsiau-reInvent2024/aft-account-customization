@@ -2,16 +2,6 @@ data "aws_ssm_parameter" "environment" {
   name = "/aft/account-request/custom-fields/environment"
 }
 
-data "aws_ssm_parameter" "ipam_nvirginia" {
-  provider = aws.aft_management
-  name     = "/aft/network/ipam/pool/nvirginia/${data.aws_ssm_parameter.environment.value}"
-}
-
-data "aws_ssm_parameter" "ipam_oregon" {
-  provider = aws.aft_management
-  name     = "/aft/network/ipam/pool/oregon/${data.aws_ssm_parameter.environment.value}"
-}
-
 data "aws_vpc_ipam_pool" "ipam_nvirginia" {
   filter {
     name   = "description"

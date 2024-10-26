@@ -52,14 +52,3 @@ module "ipam" {
     }
   }
 }
-
-# ---------- SSN PARAMETER ------------
-resource "aws_ssm_parameter" "ipam_pool_ids" {
-  provider = aws.aft_management
-
-  for_each = toset(["nvirginia/sandbox", "nvirginia/prod", "oregon/sandbox", "oregon/prod"])
-
-  name  = "/aft/network/ipam/pool/${each.key}"
-  type  = "String"
-  value = module.ipam.pools_level_2[each.key].id
-}
