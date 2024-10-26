@@ -4,12 +4,36 @@ data "aws_ssm_parameter" "environment" {
 
 data "aws_ssm_parameter" "ipam_nvirginia" {
   provider = aws.aft_management
-  name = "/aft/network/ipam/pool/nvirginia/${data.aws_ssm_parameter.environment.value}"
+  name     = "/aft/network/ipam/pool/nvirginia/${data.aws_ssm_parameter.environment.value}"
 }
 
 data "aws_ssm_parameter" "ipam_oregon" {
   provider = aws.aft_management
-  name = "/aft/network/ipam/pool/oregon/${data.aws_ssm_parameter.environment.value}"
+  name     = "/aft/network/ipam/pool/oregon/${data.aws_ssm_parameter.environment.value}"
+}
+
+data "aws_vpc_ipam_pool" "ipam_nvirginia" {
+  filter {
+    name   = "description"
+    values = ["nvirginia/${data.aws_ssm_parameter.environment.value}"]
+  }
+
+  filter {
+    name   = "address-family"
+    values = ["ipv4"]
+  }
+}
+
+data "aws_vpc_ipam_pool" "ipam_oregon" {
+  filter {
+    name   = "description"
+    values = ["oregon/${data.aws_ssm_parameter.environment.value}"]
+  }
+
+  filter {
+    name   = "address-family"
+    values = ["ipv4"]
+  }
 }
 
 # VPCs
@@ -19,7 +43,7 @@ module "vpc_nvirginia" {
 
   name                    = "AFT-Vended"
   az_count                = 3
-  vpc_ipv4_ipam_pool_id   = data.aws_ssm_parameter.ipam_nvirginia.value
+  vpc_ipv4_ipam_pool_id   = data.aws_vpc_ipam_pool.ipam_nvirginia.id
   vpc_ipv4_netmask_length = 24
 
   subnets = {
@@ -37,7 +61,7 @@ module "vpc_oregon" {
 
   name                    = "AFT-Vended"
   az_count                = 3
-  vpc_ipv4_ipam_pool_id   = data.aws_ssm_parameter.ipam_oregon.value
+  vpc_ipv4_ipam_pool_id   = data.aws_vpc_ipam_pool.ipam_oregon.id
   vpc_ipv4_netmask_length = 24
 
   subnets = {
