@@ -32,6 +32,7 @@ module "ipam" {
         }
       }
     }
+
     oregon = {
       name           = "oregon"
       netmask_length = 16
@@ -42,7 +43,7 @@ module "ipam" {
           name                 = "sandbox"
           netmask_length       = 20
           ram_share_principals = [data.aws_organizations_organization.org.arn]
-        },
+        }
         prod = {
           name                 = "prod"
           netmask_length       = 20
