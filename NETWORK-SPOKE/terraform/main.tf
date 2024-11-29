@@ -31,7 +31,7 @@ module "vpc_nvirginia" {
   source  = "aws-ia/vpc/aws"
   version = "4.4.2"
 
-  name                    = "AFT-Vended"
+  name                    = "AFT-IPAM-Vended"
   az_count                = 3
   vpc_ipv4_ipam_pool_id   = data.aws_vpc_ipam_pool.ipam_nvirginia.id
   vpc_ipv4_netmask_length = 24
@@ -49,7 +49,7 @@ module "vpc_oregon" {
     aws = aws.us_west_2
   }
 
-  name                    = "AFT-Vended"
+  name                    = "AFT-IPAM-Vended"
   az_count                = 3
   vpc_ipv4_ipam_pool_id   = data.aws_vpc_ipam_pool.ipam_oregon.id
   vpc_ipv4_netmask_length = 24
